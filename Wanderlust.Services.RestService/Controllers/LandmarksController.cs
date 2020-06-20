@@ -24,13 +24,13 @@ namespace Wanderlust.Services.API.Controllers
         }
 
         // need to test if this method works or needs a different path: ex {mustSeeLandmarks}
-        [HttpGet]
-        [Route("[action]")]
-        public async Task<IActionResult> GetMustSeeLandmarks()
-        {
-            var landmarks = await _landmarkRepository.getMustSeeLandmarks();
-            return Ok(landmarks); // status 200 and landmarks as json
-        }
+        //[HttpGet]
+        //[Route("[action]")]
+        //public async Task<IActionResult> GetMustSeeLandmarks()
+        //{
+        //    var landmarks = await _landmarkRepository.getMustSeeLandmarks();
+        //    return Ok(landmarks); // status 200 and landmarks as json
+        //}
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetLandmark(int id)
