@@ -43,7 +43,7 @@ namespace Wanderlust.ViewModels
 
         private void OnDeleteCommand()
         {
-             _landmarkDataService.DeleteLandmarkAsync(SelectedLandmark.LandmarkId);
+            _landmarkDataService.DeleteLandmarkAsync(SelectedLandmark.LandmarkId);
 
             MessagingCenter.Send(this, MessageNames.LandmarkChangedMessage, SelectedLandmark);
 

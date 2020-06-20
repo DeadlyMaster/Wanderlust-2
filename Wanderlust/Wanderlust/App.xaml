@@ -8,6 +8,14 @@
              x:Class="Wanderlust.App">
     <Application.Resources>
 
+        <Color x:Key="primary-back-title-color">#00264c</Color>
+        <Color x:Key="primary-title-color">#F8F8FF</Color>
+
+        <Style ApplyToDerivedTypes="true" TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="{StaticResource Key=primary-back-title-color}"/>
+            <Setter Property="BarTextColor" Value="{StaticResource Key=primary-title-color}"/>
+        </Style>
+
         <ResourceDictionary>
 
             <OnPlatform x:Key="LargeFontSize"
@@ -40,18 +48,19 @@
             <Color x:Key="LightGrey">#cccccc</Color>
             <Color x:Key="EntryGrey">Gray</Color>
             <Color x:Key="LightForeground">White</Color>
+            <Color x:Key="Black">Black</Color>
 
             <Style x:Key="PageHeaderStyle" TargetType="{x:Type Label}">
                 <Setter Property="FontSize" Value="{StaticResource LargeFontSize}"></Setter>
                 <Setter Property="BackgroundColor" Value="Transparent" />
-                <Setter Property="TextColor" Value="{StaticResource HeaderGrey}" />
+                <Setter Property="TextColor" Value="{StaticResource Black}" />
             </Style>
 
 
             <Style x:Key="RegularStyle" TargetType="{x:Type Label}">
                 <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"></Setter>
                 <Setter Property="BackgroundColor" Value="Transparent" />
-                <Setter Property="TextColor" Value="{StaticResource PlainGrey}" />
+                <Setter Property="TextColor" Value="{StaticResource Black}" />
             </Style>
 
             <Style x:Key="LinkStyle" TargetType="{x:Type Label}">

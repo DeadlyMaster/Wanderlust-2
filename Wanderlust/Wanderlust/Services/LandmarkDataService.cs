@@ -31,6 +31,11 @@ namespace Wanderlust.Services
             return await _landmarkRepository.GetLandmarksAsync();
         }
 
+        public async Task<List<Landmark>> GetMustSeeLandmarksAsync()
+        {
+            return await _landmarkRepository.GetMustSeeLandmarksAsync();
+        }
+
         public async Task UpdateLandmarkAsync(Landmark landmark)
         {
             await _landmarkRepository.UpdateLandmarkAsync(landmark);

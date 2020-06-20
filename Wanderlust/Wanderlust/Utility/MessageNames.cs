@@ -7,5 +7,7 @@ namespace Wanderlust.Utility
     public class MessageNames
     {
         public const string LandmarkChangedMessage = "LandmarkChanged";
+        //public const string LandmarkChangedMessage = "LandmarkChanged";
+        public const string UserLoggedIn = "UserLoggedIn";
     }
 }

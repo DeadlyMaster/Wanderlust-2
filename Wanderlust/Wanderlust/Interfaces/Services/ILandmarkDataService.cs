@@ -9,6 +9,7 @@ namespace Wanderlust.Services
     public interface ILandmarkDataService
     {
         Task<List<Landmark>> GetLandmarksAsync(bool force);
+        Task<List<Landmark>> GetMustSeeLandmarksAsync();
         Task AddLandmarkAsync(Landmark landmark);
         Task UpdateLandmarkAsync(Landmark landmark);
         Task DeleteLandmarkAsync(int id);

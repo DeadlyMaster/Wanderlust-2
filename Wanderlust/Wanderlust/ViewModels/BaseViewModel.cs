@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Wanderlust.ViewModels
 {
@@ -15,12 +16,16 @@ namespace Wanderlust.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        // implement RaisePropertyChanged
+        // implement RaisePropertyChanged if neccesary
 
         public virtual void Initialize (object parameter)
         {
-
         }
+
+        //public virtual Task InitializeAsync(object data)
+        //{
+            
+        //}
     }
 
 }

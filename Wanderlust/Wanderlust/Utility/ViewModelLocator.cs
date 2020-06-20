@@ -11,6 +11,7 @@ namespace Wanderlust.Utility
         public static LandmarkOverviewViewModel LandmarkOverviewViewModel { get; set; } = new LandmarkOverviewViewModel(App.LandmarkDataService, App.NavigationService, App.DialogService);
         public static LandmarkDetailViewModel LandmarkDetailViewModel { get; set; } = new LandmarkDetailViewModel(App.LandmarkDataService, App.NavigationService);
 
-        public static LoginViewModel LoginViewModel { get; set; } = new LoginViewModel();
+        public static LoginViewModel LoginViewModel { get; set; } = new LoginViewModel(App.NavigationService);
+        public static HomeViewModel HomeViewModel { get; set; } = new HomeViewModel(App.LandmarkDataService, App.NavigationService, App.DialogService);
     }
 }

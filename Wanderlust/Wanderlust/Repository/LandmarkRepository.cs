@@ -152,6 +152,52 @@ namespace Wanderlust.Models
             }
         }
 
+        public async Task<List<Landmark>> GetMustSeeLandmarksAsync()
+        {
+            try
+            {
+                HttpClient httpClient = CreateHttpClient(ApiConstants.MustSeeLandmarkApiUrl);
+                string jsonResult = string.Empty;
+
+                var responseMessage = await Policy
+                    .Handle<HttpRequestException>(ex =>
+                    {
+                        Debug.WriteLine($"{ex.GetType().Name + " : " + ex.Message}");
+                        return true;
+                    })
+                    .WaitAndRetryAsync
+                    (
+                        5,
+                        retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
+                    )
+                    //.CircuitBreakerAsync(exceptionsAllowedBeforeBreaking: 2, durationOfBreak: TimeSpan.FromSeconds(30))
+                    .ExecuteAsync(async () =>
+                        await httpClient.GetAsync(ApiConstants.MustSeeLandmarkApiUrl)
+                    );
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    var json = JsonConvert.DeserializeObject<List<Landmark>>(jsonResult);
+                    return json;
+                }
+
+                if (responseMessage.StatusCode == HttpStatusCode.Forbidden ||
+                    responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    throw new ServiceAuthentificationException(jsonResult);
+                }
+
+                throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"{ e.GetType().Name + " : " + e.Message}");
+                throw;
+            }
+        }
+
         public async Task<Landmark> GetLandmarkAsync(int id)
         {
             try
@@ -206,32 +252,36 @@ namespace Wanderlust.Models
 
                 string jsonResult = string.Empty;
 
-                var responseMessage = await Policy
-                    .Handle<HttpRequestException>(ex =>
-                    {
-                        Debug.WriteLine($"{ex.GetType().Name + " : " + ex.Message}");
-                        return true;
-                    })
-                    .WaitAndRetryAsync
-                    (
-                        5,
-                        retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
-                    )
-                    .ExecuteAsync(async () => await httpClient.PutAsync(ApiConstants.LandmarkApiUrl, content));
+                await httpClient.PutAsync(ApiConstants.LandmarkApiUrl, content);
 
-                if (responseMessage.IsSuccessStatusCode)
-                {
-                    jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    return;
-                }
+                //var responseMessage = await Policy
+                //    .Handle<HttpRequestException>(ex =>
+                //    {
+                //        Debug.WriteLine($"{ex.GetType().Name + " : " + ex.Message}");
+                //        return true;
+                //    })
+                //    .WaitAndRetryAsync
+                //    (
+                //        5,
+                //        retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
+                //    )
+                //    .ExecuteAsync(async () => await httpClient.PutAsync(ApiConstants.LandmarkApiUrl, content));
 
-                if (responseMessage.StatusCode == HttpStatusCode.Forbidden ||
-                    responseMessage.StatusCode == HttpStatusCode.Unauthorized)
-                {
-                    throw new ServiceAuthentificationException(jsonResult);
-                }
+                
 
-                throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
+                //if (responseMessage.IsSuccessStatusCode)
+                //{
+                //    jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+                //    return;
+                //}
+
+                //if (responseMessage.StatusCode == HttpStatusCode.Forbidden ||
+                //    responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                //{
+                //    throw new ServiceAuthentificationException(jsonResult);
+                //}
+
+                //throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
 
             }
             catch (Exception e)
