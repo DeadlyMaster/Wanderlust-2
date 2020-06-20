@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Text-to-Speech"
+             x:Class="Wanderlust.Views.TextToSpeechPage">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Entry x:Name="Entry_Text" Placeholder="Enter Text"/>
+            <Button HorizontalOptions="Center" Text="Speak" Clicked="Button_Clicked" />
+            <Slider MinimumTrackColor="Black"
+                    MaximumTrackColor="DarkSlateGray"
+                    ThumbColor="DarkSlateGray"
+                    Minimum="0" Maximum="1" Value="1" x:Name="slidervolume" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
