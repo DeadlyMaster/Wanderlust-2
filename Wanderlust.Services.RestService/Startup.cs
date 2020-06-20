@@ -49,7 +49,8 @@ namespace Wanderlust.Services.API
 
             app.UseHttpsRedirection();
 
-            app.UseRouting(); // app.UseMvcWithDefaultRoute();
+            app.UseRouting();
+            //app.UseMvcWithDefaultRoute();
             //app.UseAuthentication();
 
             app.UseAuthorization();

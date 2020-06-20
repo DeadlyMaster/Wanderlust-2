@@ -8,12 +8,15 @@ namespace Wanderlust.Services
 {
     public class NavigationService : INavigationService
     {
+        // Pages container
         private Dictionary<string, Type> pages { get; } = new Dictionary<string, Type>();
-
+        // Link to the Main Page
         public Page MainPage => Application.Current.MainPage;
 
+        //Add pages to dictionary
         public void Configure(string key, Type pageType) => pages[key] = pageType;
 
+        // Move to previous page
         public void GoBack() => MainPage.Navigation.PopAsync();
 
         public void NavigateTo(string pageKey, object parameter = null)

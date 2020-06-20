@@ -15,6 +15,8 @@ namespace Wanderlust.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        // implement RaisePropertyChanged
+
         public virtual void Initialize (object parameter)
         {
 
