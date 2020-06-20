@@ -106,11 +106,11 @@ namespace Wanderlust.Models
             }
         }
 
-        public async Task<List<Journey>> GetJourneysAsync()
+        public async Task<List<Journey>> GetJourneysAsync(string uri)
         {
             try
             {
-                HttpClient httpClient = CreateHttpClient(ApiConstants.JourneyApiUrl);
+                HttpClient httpClient = CreateHttpClient(uri);
                 string jsonResult = string.Empty;
 
                 var responseMessage = await Policy
@@ -126,7 +126,7 @@ namespace Wanderlust.Models
                     )
                     //.CircuitBreakerAsync(exceptionsAllowedBeforeBreaking: 2, durationOfBreak: TimeSpan.FromSeconds(30))
                     .ExecuteAsync(async () =>
-                        await httpClient.GetAsync(ApiConstants.JourneyApiUrl)
+                        await httpClient.GetAsync(uri)
                     );
 
                 if (responseMessage.IsSuccessStatusCode)
@@ -251,6 +251,53 @@ namespace Wanderlust.Models
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
             }
             return httpClient;
+        }
+
+        // should call the Add function from Journey Controller with visit parameter
+        public async Task AddToJourneyAsync(string uri, Visit visit)
+        {
+            try
+            {
+                HttpClient httpClient = CreateHttpClient(uri);
+
+                var json = JsonConvert.SerializeObject(visit);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                string jsonResult = string.Empty;
+
+                var responseMessage = await Policy
+                    .Handle<HttpRequestException>(ex =>
+                    {
+                        Debug.WriteLine($"{ex.GetType().Name + " : " + ex.Message}");
+                        return true;
+                    })
+                    .WaitAndRetryAsync
+                    (
+                        5,
+                        retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)) // retries 5 times in 2s, 4s, 8s...
+                    )
+                    .ExecuteAsync(async () => await httpClient.PostAsync(uri, content));
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    return;
+                }
+
+                if (responseMessage.StatusCode == HttpStatusCode.Forbidden ||
+                    responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    throw new ServiceAuthentificationException(jsonResult);
+                }
+
+                throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"{ e.GetType().Name + " : " + e.Message}");
+                throw;
+            }
         }
     }
 }

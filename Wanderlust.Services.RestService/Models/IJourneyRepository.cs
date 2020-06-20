@@ -12,6 +12,8 @@ namespace Wanderlust.Services.API.Models
         Task<Journey> AddJourney(Journey journey);
         Task UpdateJourney(Journey journey);
         Task DeleteJourney(int id);
-        Task<Journey> GetUsersJourneys(int userId);
+        Task<IEnumerable<Journey>> GetJourneysByUserId(int userId);
+
+        Task<Sight> AddToExistingJourney(Visit visit);
     }
 }

@@ -8,12 +8,14 @@ namespace Wanderlust.Services
 {
     public interface IJourneyDataService
     {
-        //Task<ShoppingCart> GetShoppingCart(string userId);
-        //Task<ShoppingCartItem> AddShoppingCartItem(ShoppingCartItem shoppingCartItem, string userId);
 
-        Task<List<Journey>> GetJourneysAsync(/*bool force*/ int userId);
+        //return the list of journeys
+        Task<List<Journey>> GetJourneysAsync(int userId);
 
-        Task<Sight> AddSight(Sight sight, int userId);
+        // adds a sight to the selected journey
+        Task<Sight> AddSightAsync(Sight sight, int userId);
+
+        
         Task AddJourneyAsync(Journey journey); // create a journey
         Task UpdateJourneyAsync(Journey journey);
         Task DeleteJourneyAsync(int id);

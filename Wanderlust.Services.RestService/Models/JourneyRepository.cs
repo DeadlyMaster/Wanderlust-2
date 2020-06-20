@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,13 +17,48 @@ namespace Wanderlust.Services.API.Models
             _apiDbContext = apiDbContext;
         }
 
-        public async Task<Journey> GetUsersJourneys(int userId)
+        public async Task<IEnumerable<Journey>> GetJourneysByUserId(int userId)
         {
             return await Task.Factory.StartNew(() =>
             {
-                var journeys = _apiDbContext.Journeys.Include(s => s.Sights).ThenInclude(s => s.Landmark).FirstOrDefault(s => s.User == userId);
+                //var journeys = _apiDbContext.Journeys.Include(s => s.Sights).ThenInclude(s => s.Landmark).FirstOrDefault(s => s.User == userId); // one journey
+                var journeys = (IEnumerable<Journey>)_apiDbContext.Journeys.Include(s => s.Sights).ThenInclude(s => s.Landmark).Where(s => s.User == userId).ToListAsync();
                 //return journeys == null ? new Journey() : journeys; // do not create a new journey if the user does not have one
                 return journeys;
+            });
+        }
+
+        public async Task<Sight> AddToExistingJourney(Visit visit)
+        {
+
+            return await Task.Factory.StartNew(() =>
+            {
+                //var journey = _apiDbContext.Journeys.FirstOrDefault(s => s.User == visit.UserId);
+                //search for journey id
+                var journey = _apiDbContext.Journeys.FirstOrDefault(s => s.JourneyId == visit.Sight.JourneyId);
+
+                // if it's null than we create a journey
+                if (journey == null)
+                {
+                    journey = new Journey { User = visit.UserId };
+                    _apiDbContext.Journeys.Add(journey);
+                    _apiDbContext.SaveChanges();
+                }
+
+                //get the landmark to be visited
+                var landmark = _apiDbContext.Landmarks.FirstOrDefault(l => l.LandmarkId == visit.Sight.LandmarkId);
+
+                var sight = new Sight
+                {
+                    Landmark = landmark, // not sure if needed
+                    LandmarkId = visit.Sight.Landmark.LandmarkId,
+                    JourneyId = journey.JourneyId
+                };
+
+                _apiDbContext.Sights.Add(sight);
+                _apiDbContext.SaveChanges();
+
+                return sight;
             });
         }
 

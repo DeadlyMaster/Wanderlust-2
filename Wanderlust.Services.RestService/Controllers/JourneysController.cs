@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity.UI.V3.Pages.Internal.Account;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Newtonsoft.Json.Linq;
 using System;
@@ -24,8 +25,18 @@ namespace Wanderlust.Services.API.Controllers
         public async Task<IActionResult> GetItemsForUser(int userId)
         {
             // get the journeys
-            var journeys = await _journeyRepository.GetUsersJourneys(userId);
+            var journeys = await _journeyRepository.GetJourneysByUserId(userId);
             return Ok(journeys);
+        }
+
+
+        [HttpPost]
+        // get controller
+        public async Task<IActionResult> Add([FromBody]Visit visit)
+        {
+            // get the right journey
+            var sight = await _journeyRepository.AddToExistingJourney(visit);
+            return Ok(sight);
         }
 
         [HttpGet]
