@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Wanderlust.Views.LoginPageView">
+    <!--<ContentPage.Content>-->
+
+    <ContentPage.Resources>
+        <StyleSheet Source="../Styles/LoginPage.css" />
+    </ContentPage.Resources>
+
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <FlexLayout x:Name="Form" StyleClass="body">
+            <StackLayout x:Name="LoginForm" StyleClass="container">
+                <Label StyleClass="logo" Text="Sign in" />
+                <FlexLayout StyleClass="login-form">
+                    
+                    <StackLayout>
+                        <Entry Placeholder="user name" WidthRequest="100" TextColor="Black" Text="{Binding UserName, Mode=OneWayToSource}"/>
+                        <Entry IsPassword="True" Placeholder="password" WidthRequest="100" TextColor="Black" Text="{Binding Password, Mode=OneWayToSource}"/>
+                        <Button TextColor="AntiqueWhite" Text="Sign In" Command="{Binding LoginCommand}"/>
+                        <Label Text="{Binding ErrorMsg, Mode=TwoWay}" TextColor="Red"/>
+                        <Label StyleClass="logo" Text="Forgot your password?">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer            
+                                        Command="{Binding ChangePasswordCommand}"  
+                                        NumberOfTapsRequired="1" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label StyleClass="logo" Text="Register today!">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer            
+                                        Command="{Binding RegisterCommand}"  
+                                        NumberOfTapsRequired="1" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                    
+                </FlexLayout>
+            </StackLayout>
+
+        </FlexLayout>
+
+    </Grid>
+
+
+    <!--</ContentPage.Content>-->
+</ContentPage>

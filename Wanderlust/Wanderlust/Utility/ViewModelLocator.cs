@@ -10,5 +10,7 @@ namespace Wanderlust.Utility
         //ne asiguram si ca toate view models sunt intantiate la inceputul rularii
         public static LandmarkOverviewViewModel LandmarkOverviewViewModel { get; set; } = new LandmarkOverviewViewModel(App.LandmarkDataService, App.NavigationService, App.DialogService);
         public static LandmarkDetailViewModel LandmarkDetailViewModel { get; set; } = new LandmarkDetailViewModel(App.LandmarkDataService, App.NavigationService);
+
+        public static LoginViewModel LoginViewModel { get; set; } = new LoginViewModel();
     }
 }
