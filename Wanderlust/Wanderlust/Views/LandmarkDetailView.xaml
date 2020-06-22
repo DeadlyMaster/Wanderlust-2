@@ -26,7 +26,7 @@
                     <ColumnDefinition Width=".6*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Label x:Name="TitleLabel" 
-                   Text="Landmark management"
+                   Text="Landmark view"
                    Grid.Row="0" 
                    Grid.Column="0" 
                    Grid.ColumnSpan="2" 
@@ -49,14 +49,28 @@
                    Grid.Column="1"
                    Text="{Binding SelectedLandmark.LandmarkName, Mode=TwoWay}"
                    Style="{StaticResource RegularEntry}"></Entry>
-                <Label Text="ID" 
+                <Label Text="Map" 
                    Grid.Row="3" 
                    Grid.Column="0"
                    Style="{StaticResource SmallLabelStyle}"></Label>
-                <Entry Grid.Row="3"
+                <Image x:Name="MapImage" 
                    Grid.Column="1"
-                       Text="{Binding SelectedLandmark.LandmarkId, Mode=TwoWay}"
-                   Style="{StaticResource RegularEntry}"></Entry>
+                   Grid.Row="3" 
+                   Grid.ColumnSpan="1"
+                   Source="mapPin.jpg"
+                   Margin="10" 
+                   WidthRequest="100" 
+                   HeightRequest="100" 
+                   HorizontalOptions="End" 
+                   VerticalOptions="End" 
+                       >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer            
+                                        Command="{Binding MapCommand}"  
+                                        NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+
+                </Image>
                 <Label Text="Description" 
                    Grid.Row="4" 
                    Grid.Column="0"
@@ -71,8 +85,8 @@
                     Grid.Row="6" 
                     Grid.Column="0"
                     Grid.ColumnSpan="2"></Button>
-                <Button x:Name="DeleteLandmarkButton"  Command="{Binding DeleteCommand}"
-                    Text="Delete" 
+                <Button x:Name="ReadJourneyButton"  Command="{Binding ReadDescriptionCommand}"
+                    Text="Read" 
                     Style="{StaticResource RegularButtonStyle}" 
                     Grid.Row="7" 
                     Grid.Column="0"

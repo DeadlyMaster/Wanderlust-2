@@ -11,6 +11,7 @@ namespace Wanderlust.Models
         private string _landmarkName;
         private string _description;
         private string _imageUrl;
+        private bool _mustSee;
 
         public int LandmarkId
         {
@@ -49,6 +50,16 @@ namespace Wanderlust.Models
             {
                 _imageUrl = value;
                 RaisePropertyChanged(nameof(ImageUrl));
+            }
+        }
+
+        public bool MustSee
+        {
+            get => _mustSee;
+            set
+            {
+                _mustSee = value;
+                RaisePropertyChanged(nameof(MustSee));
             }
         }
 

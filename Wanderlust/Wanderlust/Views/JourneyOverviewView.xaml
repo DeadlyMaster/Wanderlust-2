@@ -2,17 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:behaviors="clr-namespace:Wanderlust.Behaviors"
              mc:Ignorable="d"
-             BackgroundImage="patternwide.org"
-             Title="Wanderlust"
-             xmlns:viewModels="clr-namespace:Wanderlust.ViewModels"
-             xmlns:behaviors="clr-namespace:Wanderlust.Behaviors;assembly=Wanderlust"
-             x:Class="Wanderlust.Views.LandmarkOverviewView">
-
-    <!--<ContentPage.Content>
-        
-    </ContentPage.Content>-->
+             BackgroundImageSource="pattern2.org"
+             Title="My Journeys"
+             x:Class="Wanderlust.Views.JourneyOverviewView">
 
     <Grid>
 
@@ -21,15 +15,15 @@
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Text="Load Landmarks" Command="{Binding LoadCommand}"></Button>
-        <Button Grid.Row="1" Text="Add new landmark" Command="{Binding AddCommand}"></Button>
+        <Button Grid.Row="0" BackgroundColor="#c8bca8" Text="Load Journeys" Command="{Binding LoadCommand}"></Button>
+        <Button Grid.Row="1" BackgroundColor="#c8bca8" Text="Add new Journey" Command="{Binding AddCommand}"></Button>
 
-        <ListView HasUnevenRows="True" Grid.Row="2" ItemsSource="{Binding Landmarks}"
+        <ListView HasUnevenRows="True" Grid.Row="2" ItemsSource="{Binding Journeys}"
               x:Name="LandmarksListView" CachingStrategy="RecycleElement"  >
             <ListView.Behaviors>
                 <behaviors:EventToCommandBehavior 
                     EventName="ItemTapped" 
-                    Command="{Binding LandmarkSelectedCommand}"
+                    Command="{Binding JourneySelectedCommand}"
                     EventArgsConverter="{StaticResource LocalItemTappedConverter}">
                 </behaviors:EventToCommandBehavior>
             </ListView.Behaviors>
@@ -43,16 +37,16 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="125"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="50"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Image Grid.Row="0" HeightRequest="125" VerticalOptions="Start" Margin="2,2,1,2" Source="{Binding ImageUrl}"></Image>
-                            <Label Grid.Row="0" Grid.Column="1" VerticalOptions="Center" Style="{StaticResource MediumLabelStyle}" Text="{Binding LandmarkName}" Margin="3" ></Label>
-                            <Button Command="{Binding AddCommand}" VerticalOptions="CenterAndExpand" Text="Add" Grid.Row="0" Grid.Column="2" Margin="3" Style="{StaticResource RegularButtonStyle}"></Button>
-                            <!--<Label Grid.Row="0" Grid.Column="2" Margin="3" Text="{Binding LandmarkId}" Style="{StaticResource SmallLabelStyle}" FontAttributes="Bold" HorizontalTextAlignment="End"></Label>-->
+                            <!--<Image Grid.Row="0" HeightRequest="125" VerticalOptions="Start" Margin="2,2,1,2" Source="{Binding ImageUrl}"></Image>-->
+                            <Label Grid.Row="0" Grid.Column="1" VerticalOptions="Center" Style="{StaticResource MediumLabelStyle}" Text="{Binding JourneyName}" Margin="3" ></Label>
+                            <Label Grid.Row="0" Grid.Column="2" Margin="3" Text="{Binding JourneyId}" Style="{StaticResource SmallLabelStyle}" FontAttributes="Bold" HorizontalTextAlignment="End"></Label>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
     </Grid>
+
 </ContentPage>

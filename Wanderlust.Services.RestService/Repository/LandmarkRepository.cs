@@ -56,14 +56,16 @@ namespace Wanderlust.Services.API.Models
         {
             return await Task.Factory.StartNew(() =>
             {
-                    //landmark.LandmarkId = Guid.NewGuid(); // not neeeded, id is int and primary key
-                    // random code image ;) untill adding an image is possible 
-                    landmark.ImageUrl = "https://www.usnews.com/dims4/USNEWS/26485ec/2147483647/resize/1200x%3E/quality/85/?url=http%3A%2F%2Fmedia.beam.usnews.com%2F42%2F18%2Ffea6243e41c7bbe827610a48028c%2F4-eiffel-tower-getty.jpg";
+                //landmark.LandmarkId = Guid.NewGuid(); // not neeeded, id is int and primary key
+                // random code image ;) untill adding an image is possible 
+                // this should be auto-generated
+                landmark.LandmarkId = 0;
+                    if (landmark.ImageUrl == "")
+                        landmark.ImageUrl = "https://www.usnews.com/dims4/USNEWS/26485ec/2147483647/resize/1200x%3E/quality/85/?url=http%3A%2F%2Fmedia.beam.usnews.com%2F42%2F18%2Ffea6243e41c7bbe827610a48028c%2F4-eiffel-tower-getty.jpg";
 
                 _apiDbContext.Landmarks.Add(landmark);
                 _apiDbContext.SaveChanges(); // maybe it works
-                                             //_landmarks.Add(landmark);
-                    return landmark;
+                return landmark;
             });
         }
 

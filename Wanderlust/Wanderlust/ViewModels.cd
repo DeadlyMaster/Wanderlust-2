@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Wanderlust.ViewModels.HomeViewModel">
+    <Position X="6.5" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAiEAAAYAAIAAgQIAAAAIAAAQAAAAAEAAAAAA=</HashCode>
+      <FileName>ViewModels\HomeViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_landmarkDataService" />
+      <Field Name="_navigationService" />
+      <Field Name="_dialogService" />
+      <Field Name="_mustSeeLandmarks" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Wanderlust.ViewModels.JourneyOverviewModel">
+    <Position X="11.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAADICIAAAAABABAAIQAAAAAQAAAADA=</HashCode>
+      <FileName>ViewModels\JourneyOverviewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_dialogService" />
+      <Field Name="_journeyDataService" />
+      <Field Name="_navigationService" />
+      <Field Name="_journeys" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="System.Collections.ObjectModel.ObservableCollection&lt;T&gt;">
+    <Position X="16" Y="4.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Wanderlust.ViewModels.JourneyViewModel">
+    <Position X="7.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAQADICJAAAAABABAAIQAABAAQAAAADA=</HashCode>
+      <FileName>ViewModels\JourneyViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_journeyDataService" />
+      <Field Name="_dialogService" />
+      <Field Name="_journeys" />
+      <Field Name="_navigationService" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Wanderlust.ViewModels.LandmarkDetailViewModel">
+    <Position X="3.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAABAEBAABAAYEAIAAAAAAAEAAAAAAAACAAAgAEAAA=</HashCode>
+      <FileName>ViewModels\LandmarkDetailViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_landmarkDataService" />
+      <Field Name="_navigationService" />
+      <Field Name="_selectedLandmark" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Wanderlust.Models.Landmark">
+    <Position X="5.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAACAAAAAAAEAABAAAAAgAAgAAAAABCgAYAAAAA=</HashCode>
+      <FileName>Models\Landmark.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Wanderlust.Services.ILandmarkDataService">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAEAgAAAAAAAAAAAAAAAAEAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Services\ILandmarkDataService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Wanderlust.Services.INavigationService">
+    <Position X="1.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAALAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Services\INavigationService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Wanderlust.Services.IDialogService">
+    <Position X="1.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Services\IDialogService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Wanderlust.Services.IJourneyDataService">
+    <Position X="15.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAIAAEAAAAAAAAAAAAAAAAAAAAEQAAEAAAA=</HashCode>
+      <FileName>Interfaces\Services\IJourneyDataService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

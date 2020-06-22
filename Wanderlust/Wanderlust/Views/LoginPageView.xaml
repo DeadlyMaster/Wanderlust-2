@@ -4,6 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             BackgroundImage="Road.org"
+             Title="Wanderlust"
              x:Class="Wanderlust.Views.LoginPageView">
     <!--<ContentPage.Content>-->
 
@@ -20,7 +22,7 @@
 
         <FlexLayout x:Name="Form" StyleClass="body">
             <StackLayout x:Name="LoginForm" StyleClass="container">
-                <Label StyleClass="logo" Text="Sign in" />
+                <Label StyleClass="logo" Text="Sign in" TextColor="Black"/>
                 <FlexLayout StyleClass="login-form">
                     
                     <StackLayout>
@@ -28,7 +30,7 @@
                         <Entry IsPassword="True" Placeholder="password" WidthRequest="100" TextColor="Black" Text="{Binding Password, Mode=OneWayToSource}"/>
                         <Button TextColor="AntiqueWhite" Text="Sign In" Command="{Binding LoginCommand}"/>
                         <Label Text="{Binding ErrorMsg, Mode=TwoWay}" TextColor="Red"/>
-                        <Label StyleClass="logo" Text="Forgot your password?">
+                        <!--<Label StyleClass="logo" Text="Forgot your password?">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer            
                                         Command="{Binding ChangePasswordCommand}"  
@@ -41,7 +43,7 @@
                                         Command="{Binding RegisterCommand}"  
                                         NumberOfTapsRequired="1" />
                             </Label.GestureRecognizers>
-                        </Label>
+                        </Label>-->
                     </StackLayout>
                     
                 </FlexLayout>

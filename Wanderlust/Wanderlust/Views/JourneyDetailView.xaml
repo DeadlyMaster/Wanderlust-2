@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Wanderlust.Views.JourneyDetailView">
+    <ContentPage.Content>
+
+        <ScrollView>
+            <Grid Grid.Row="1" x:Name="JourneyGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="150"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="200"></RowDefinition>
+                    <!--<RowDefinition Height="50"></RowDefinition>-->
+                    <RowDefinition Height="*"></RowDefinition>
+                    <!--<RowDefinition Height="50"></RowDefinition>-->
+                    <!--<RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>-->
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".4*"></ColumnDefinition>
+                    <ColumnDefinition Width=".6*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="TitleLabel" 
+                   Text="Journey management"
+                   Grid.Row="0" 
+                   Grid.Column="0" 
+                   Grid.ColumnSpan="2" 
+                   Style="{StaticResource TitleLabelStyle}"></Label>
+                <!-- <Image x:Name="JourneyImage"  -->
+                   <!-- Grid.Column="0" -->
+                   <!-- Grid.Row="1"  -->
+                   <!-- Grid.ColumnSpan="2" -->
+                   <!-- Source="{Binding SelectedJourney.ImageUrl}" -->
+                   <!-- Margin="10"  -->
+                   <!-- WidthRequest="200"  -->
+                   <!-- HeightRequest="200"  -->
+                   <!-- HorizontalOptions="Center"  -->
+                   <!-- VerticalOptions="Center"></Image> -->
+                <Label Text="Journey name" 
+                   Grid.Row="2" 
+                   Grid.Column="0"
+                   Style="{StaticResource SmallLabelStyle}"></Label>
+                <Entry Grid.Row="2"
+                   Grid.Column="1"
+                   Text="{Binding SelectedJourney.JourneyName, Mode=TwoWay}"
+                   Style="{StaticResource RegularEntry}"></Entry>
+                <Label Text="ID" 
+                   Grid.Row="3" 
+                   Grid.Column="0"
+                   Style="{StaticResource SmallLabelStyle}"></Label>
+                <Entry Grid.Row="3"
+                   Grid.Column="1"
+                       Text="{Binding SelectedJourney.JourneyId, Mode=TwoWay}"
+                   Style="{StaticResource RegularEntry}"></Entry>
+                <Label Text="Description" 
+                   Grid.Row="4" 
+                   Grid.Column="0"
+                   Style="{StaticResource SmallLabelStyle}"></Label>
+                <Editor Grid.Row="4"
+                   Grid.Column="1"
+                   Text="{Binding SelectedJourney.JourneyDescription, Mode=TwoWay}" 
+                   Style="{StaticResource RegularEditorStyle}"></Editor>
+                
+                <Grid Grid.Row="5" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                        <!--<ColumnDefinition Width="50"></ColumnDefinition>
+                        <ColumnDefinition Width="50"></ColumnDefinition>-->
+                    </Grid.ColumnDefinitions>
+
+
+                    
+
+                    <Button x:Name="AddLandmarkButton"  Command="{Binding AddLandmark}"
+                    Text="Add" 
+                    Style="{StaticResource RegularButtonStyle}" 
+                    Grid.Row="0" 
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"></Button>
+
+                    <!--<Button x:Name="AddLandmarkButton"  Command="{Binding AddLandmark}"
+                    Text="Save" 
+                    Style="{StaticResource RegularButtonStyle}" 
+                    Grid.Row="0" 
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"></Button>
+
+                    <Button x:Name="DeleteJourneyButton"  Command="{Binding DeleteCommand}"
+                    Text="Delete" 
+                    Style="{StaticResource RegularButtonStyle}" 
+                    Grid.Row="0" 
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"></Button>-->
+                </Grid>
+                
+                <Grid Grid.Row="5" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                        <!--<ColumnDefinition Width="50"></ColumnDefinition>-->
+                    </Grid.ColumnDefinitions>
+
+
+                    <!--<Button x:Name="SaveJourneyButton"  Command="{Binding SaveCommand}"
+                    Text="Save" 
+                    Style="{StaticResource RegularButtonStyle}" 
+                    Grid.Row="0" 
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"></Button>-->
+
+                    <Button x:Name="SaveJourneyButton"  Command="{Binding SaveCommand}"
+                    Text="Save" 
+                    Style="{StaticResource RegularButtonStyle}" 
+                    Grid.Row="0" 
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"></Button>
+
+                    <Button x:Name="DeleteJourneyButton"  Command="{Binding DeleteCommand}"
+                    Text="Delete" 
+                    Style="{StaticResource RegularButtonStyle}" 
+                    Grid.Row="0" 
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"></Button>
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+    
+       
+
+</ContentPage>

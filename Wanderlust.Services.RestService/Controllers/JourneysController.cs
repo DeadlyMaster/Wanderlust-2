@@ -30,14 +30,14 @@ namespace Wanderlust.Services.API.Controllers
         }
 
 
-        [HttpPost]
-        // get controller
-        public async Task<IActionResult> Add([FromBody]Visit visit)
-        {
-            // get the right journey
-            var sight = await _journeyRepository.AddToExistingJourney(visit);
-            return Ok(sight);
-        }
+        //[HttpPost]
+        //// get controller
+        //public async Task<IActionResult> Add([FromBody] Visit visit)
+        //{
+        //    // get the right journey
+        //    var sight = await _journeyRepository.AddToExistingJourney(visit);
+        //    return Ok(sight);
+        //}
 
         [HttpGet]
         public async Task<IActionResult> GetJourneys()
@@ -102,6 +102,7 @@ namespace Wanderlust.Services.API.Controllers
             if (id <= 0)
                 return BadRequest();
 
+            // makes no sense here since we pass down the id 
             var journeyToDelete = await _journeyRepository.GetJourney(id);
             if (journeyToDelete == null)
                 return NotFound();

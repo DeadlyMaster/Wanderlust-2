@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:behaviors="clr-namespace:Wanderlust.Behaviors"
+             mc:Ignorable="d"
+             Title="Home Page"
+             x:Class="Wanderlust.Views.HomePageView">
+    <ContentPage.Content>
+
+        <!--<ContentPage.Resources>
+            <StyleSheet Source="../Styles/LoginPage.css" />
+        </ContentPage.Resources>-->
+
+        <!--<Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <FlexLayout x:Name="Form" StyleClass="body">
+                <StackLayout x:Name="LoginForm" StyleClass="container">
+                    <Label StyleClass="logo" Text="Sign in" />
+                    <FlexLayout StyleClass="login-form">
+
+                        <StackLayout>
+                            <Entry Placeholder="user name" WidthRequest="100" TextColor="Black" Text="{Binding UserName, Mode=OneWayToSource}"/>
+                            <Entry IsPassword="True" Placeholder="password" WidthRequest="100" TextColor="Black" Text="{Binding Password, Mode=OneWayToSource}"/>
+                            <Button TextColor="AntiqueWhite" Text="Sign In" Command="{Binding LoginCommand}"/>
+                            <Label Text="{Binding ErrorMsg, Mode=TwoWay}" TextColor="Red"/>
+                            <Label StyleClass="logo" Text="Forgot your password?">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer            
+                                        Command="{Binding ChangePasswordCommand}"  
+                                        NumberOfTapsRequired="1" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Label StyleClass="logo" Text="Register today!">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer            
+                                        Command="{Binding RegisterCommand}"  
+                                        NumberOfTapsRequired="1" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+
+                    </FlexLayout>
+                </StackLayout>
+
+            </FlexLayout>
+
+        </Grid>-->
+
+        <Grid>
+            <ListView VerticalOptions="FillAndExpand" Header="{Binding .}" Footer="{Binding .}" ItemsSource="{Binding MustSeeLandmarks}" CachingStrategy="RecycleElement"
+            SeparatorVisibility="None" 
+                  
+            HasUnevenRows="True">
+                
+                <ListView.Behaviors>
+                    <behaviors:EventToCommandBehavior EventName="ItemTapped" Command="{Binding LandmarkTappedCommand}" 
+                                                  EventArgsConverter="{StaticResource LocalItemTappedConverter}" >
+                    </behaviors:EventToCommandBehavior>
+                </ListView.Behaviors>
+                
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="8*"></RowDefinition>
+                                <RowDefinition Height="2*"></RowDefinition>
+                                <!--<RowDefinition Height="2*"></RowDefinition>-->
+                            </Grid.RowDefinitions>
+                            <Image HeightRequest="200" Grid.Row="0" Source="Wherever2.jpg" Aspect="AspectFill"></Image>
+                            <StackLayout Grid.Row="1">
+                                <Label Text="Wanderlust" Style="{StaticResource PageHeaderStyle}" HorizontalOptions="CenterAndExpand"></Label>
+
+                                <Label Text="(n) a strong desire or urge to travel and explore the world" Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>
+
+                                <!--<Button BackgroundColor="Grey" Margin="25 20 0" TextColor="Black" Text="My Journeys" Command="{Binding MyJourneyCommand}"/>-->
+                                <!--background-color: #1F7A8C;-->
+                                <Grid BackgroundColor="White">
+                                    <!--<Image HeightRequest="200" Margin="10" WidthRequest="200" Source="springsale.jpg" ></Image>-->
+                                    <!--<Button BackgroundColor="Grey" Margin="25 20 0" TextColor="Black" Text="My Journeys" Command="{Binding MyJourneyCommand}"/>-->
+                                </Grid>
+                            </StackLayout>
+                            
+                            
+                        </Grid>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Margin="10" Padding="10" HeightRequest="200" >
+                                <Grid Margin="1" BackgroundColor="White" RowSpacing="0" HeightRequest="200" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="6*"></RowDefinition>
+                                        <!--<RowDefinition Height="1*"></RowDefinition>-->
+                                        <!--<RowDefinition Height="1*"></RowDefinition>-->
+                                        <RowDefinition Height="2*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Row="0" Grid.ColumnSpan="2" Aspect="AspectFill" Source="{Binding ImageUrl}" HeightRequest="100" WidthRequest="100"></Image>
+                                    <Label Grid.Row="1" Grid.Column="0" Text="{Binding LandmarkName}" Style="{StaticResource LandmarkNameStyle}"></Label>
+                                    <Label               Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding LandmarkDescription}" Style="{StaticResource LandmarkDescriptionStyle}"></Label>
+                                    <!--Grid.Column="0"-->
+                                    <!--<Button Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Text="Add to cart" Style="{StaticResource RegularButton}" Command="{Binding Source={x:Reference HomeViewPage}, Path=BindingContext.AddToJourney}" CommandParameter="{Binding}"></Button>-->
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.FooterTemplate>
+                    <DataTemplate>
+                        <Grid RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <!--<RowDefinition Height="6*"></RowDefinition>-->
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            
+                            <!--<Button TextColor="Black" Text="My Journeys" Command="{Binding MyJourneyCommand}"/>-->
+                            <Grid BackgroundColor="White">
+                                <!--<Image HeightRequest="200" Margin="10" WidthRequest="200" Source="springsale.jpg" ></Image>-->
+                                <!--Margin="25 20 0"-->
+                                <Button BackgroundColor="#00264c" TextColor="White" Text="My Journeys" Command="{Binding MyJourneyCommand}"/>
+                            </Grid>
+                            <!--Grid.Row="1"-->
+                            <Grid Grid.Row="2">
+                                <Image Source="pattern3.png" HeightRequest="100" Aspect="Fill"></Image>
+                                <Label Text="© 2020 Wanderlust" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource RegularStyle}"></Label>
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.FooterTemplate>
+            </ListView>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

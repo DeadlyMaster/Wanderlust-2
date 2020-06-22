@@ -18,33 +18,87 @@ namespace Wanderlust.Services.API.Controllers
             _userRepository = userRepository;
         }
 
+        //[HttpGet]
+
+        //public async Task<IActionResult> GetUserAsync()
+        //{
+        //    //var user = await _userRepository.GetUserByEmail(email);
+        //    //return Ok(user); // status 200
+        //}
+
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> Register(string firstName, string lastName, string email, string userName, string password)
+        public async Task<IActionResult> Register([FromBody] User user)
         {
-            if (userName == null || firstName == null || lastName == null || email == null)
+            if (user == null)
                 return BadRequest();
 
-            //maybe create a switch here
-            if (userName == string.Empty || firstName == string.Empty || lastName == string.Empty || email == string.Empty || password == string.Empty)
+            if (user.Email == string.Empty)
             {
-                ModelState.AddModelError("Validation", "The UserName Email FirstName LastName Password cannot be empty");
+                ModelState.AddModelError("User Email", "The email cannot be empty");
             }
 
-            var createdUser = new User()
+            //if (userName == null || firstName == null || lastName == null || email == null)
+            //    return BadRequest();
+
+            ////maybe create a switch here
+            //if (userName == string.Empty || firstName == string.Empty || lastName == string.Empty || email == string.Empty || password == string.Empty)
+            //{
+            //    ModelState.AddModelError("Validation", "The UserName Email FirstName LastName Password cannot be empty");
+            //}
+
+            // search for a duplicated email
+            var getUser = await _userRepository.GetUserByEmail(user.Email);  
+
+            if (getUser == null)
             {
-                Email = email,
-                FirstName = firstName,
-                LastName = lastName,
-                UserName = userName
-            };
+                //var createdUser = new User()
+                //{
+                //    Email = email,
+                //    FirstName = firstName,
+                //    LastName = lastName,
+                //    UserName = userName,
+                //    Password = password
+                //};
 
-            createdUser = await _userRepository.AddUser(createdUser);
+                var createdUser = await _userRepository.AddUser(user);
 
+                return Ok(new AuthenticationResponse
+                {
+                    IsAuthenticated = true,
+                    User = createdUser
+                });
+            }
+
+            //return error
+            ModelState.AddModelError("Email", "The email cannot be duplicated!");
+            return BadRequest(ModelState);
+        }
+
+        [HttpPost]
+        [Route("[action]")]
+        public async Task<IActionResult> AuthenticateAsync(string userName, string password)
+        {
+            // getuser by username
+            var user = await _userRepository.GetUserByEmail(userName);
+
+            if (user.Password != password)
+                ModelState.AddModelError("Authentication", "Password is incorrect!");
+
+
+            //maybe leave it like this
             return Ok(new AuthenticationResponse
             {
                 IsAuthenticated = true,
-                User = createdUser
+                User = user
+                //User = new User()
+                //{
+                //    //Id = Guid.NewGuid().ToString(),
+                //    Email = "test@something.com",
+                //    FirstName = "Gill",
+                //    LastName = "Cleeren",
+                //    UserName = userName
+                //}
             });
         }
 
@@ -52,29 +106,29 @@ namespace Wanderlust.Services.API.Controllers
 
 
 
-        //[HttpPost]
-        //[Route("[action]")]
-        //public async Task<IActionResult> AddUser([FromBody] User user) // registration - this will be called for register
-        //{
-        //    if (user == null)
-        //        return BadRequest();
+        [HttpPost]
+        [Route("[action]")]
+        public async Task<IActionResult> AddUser([FromBody] User user) // registration - this will be called for register
+        {
+            if (user == null)
+                return BadRequest();
 
-        //    if (user.Email == string.Empty)
-        //    {
-        //        ModelState.AddModelError("User Email", "The email cannot be empty");
-        //    }
+            if (user.Email == string.Empty)
+            {
+                ModelState.AddModelError("User Email", "The email cannot be empty");
+            }
 
-        //    //if (user.Password == string.Empty)
-        //    //{
-        //    //    ModelState.AddModelError("User Password", "The password cannot be empty");
-        //    //}
+            //if (user.Password == string.Empty)
+            //{
+            //    ModelState.AddModelError("User Password", "The password cannot be empty");
+            //}
 
-        //    if (!ModelState.IsValid) // model binding may fail
-        //        return BadRequest(ModelState);
+            if (!ModelState.IsValid) // model binding may fail
+                return BadRequest(ModelState);
 
-        //    var createdUser = await _userRepository.AddUser(user);
+            var createdUser = await _userRepository.AddUser(user);
 
-        //    return Created("user", createdUser);
-        //}
+            return Created("user", createdUser);
+        }
     }
 }

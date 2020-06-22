@@ -31,6 +31,12 @@
     <EmbeddedResource Update="Views\HomePageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\JourneyDetailView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\JourneyOverviewView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\LandmarkDetailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -43,16 +49,16 @@
     <EmbeddedResource Update="Views\LoginPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MainPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\MenuPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Behaviors\" />
     <Folder Include="Converters\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\JourneyDetailView.xaml.cs">
+      <DependentUpon>JourneyDetailView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

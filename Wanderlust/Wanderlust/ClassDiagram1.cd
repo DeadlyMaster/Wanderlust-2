@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Wanderlust.App">
+    <Position X="6.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAEAABAAAQgAEAAACAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DialogService" />
+      <Property Name="JourneyDataService" />
+      <Property Name="LandmarkDataService" />
+      <Property Name="NavigationService" />
+      <Property Name="AuthenticateService" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Wanderlust.Services.DialogService">
+    <Position X="4.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\DialogService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Wanderlust.Services.JourneyDataService">
+    <Position X="3.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAIAAEAAAAAAAAAAAAAAAAAAAAEQAAEAAAA=</HashCode>
+      <FileName>Services\JourneyDataService.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_journeyRepository" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Wanderlust.Services.LandmarkDataService">
+    <Position X="9.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAEAgAAAAAAAAAAAAAAAAEAAQAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Services\LandmarkDataService.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_landmarkRepository" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Wanderlust.Services.NavigationService">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQCAAAAAAAALAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\NavigationService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Wanderlust.Services.AuthenticateService">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Services\AuthenticateService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Wanderlust.Models.ILandmarkRepository">
+    <Position X="12.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAEAgAAAAAAAAAAAAAAAAEAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Interfaces\Repository\ILandmarkRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Wanderlust.Models.IJourneyRepository">
+    <Position X="1.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAEAAAAAIAAEAAAAAAAAAAAAAAAAAAAAAQAAEAAAA=</HashCode>
+      <FileName>Interfaces\Repository\IJourneyRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

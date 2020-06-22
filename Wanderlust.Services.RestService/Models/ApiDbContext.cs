@@ -26,9 +26,9 @@ namespace Wanderlust.Services.API.Models
             modelBuilder.Entity<Journey>().HasMany(b => b.Sights).WithOne();
 
             // seed users
-            modelBuilder.Entity<User>().HasData(new User { UserId = 1, UserName="andrei.pintea", FirstName = "Andrei", LastName="Pintea", Email = "pintea.andrei94@gmail.com" });
-            modelBuilder.Entity<User>().HasData(new User { UserId = 2, UserName = "cristi.pintea", FirstName = "Cristian", LastName = "Pintea", Email = "pintea.cristian94@gmail.com" });
-            modelBuilder.Entity<User>().HasData(new User { UserId = 3, UserName = "vlad.pop", FirstName = "Vlad", LastName = "Pop", Email = "pop.vlad94@gmail.com" });
+            modelBuilder.Entity<User>().HasData(new User { UserId = 1, UserName="andrei.pintea", FirstName = "Andrei", LastName="Pintea", Email = "pintea.andrei94@gmail.com", Password = "123" });
+            modelBuilder.Entity<User>().HasData(new User { UserId = 2, UserName = "cristi.pintea", FirstName = "Cristian", LastName = "Pintea", Email = "pintea.cristian94@gmail.com", Password = "123" });
+            modelBuilder.Entity<User>().HasData(new User { UserId = 3, UserName = "vlad.pop", FirstName = "Vlad", LastName = "Pop", Email = "pop.vlad94@gmail.com", Password = "123" });
 
             // sights
             modelBuilder.Entity<Sight>().HasData(new Sight { SightId = 1, /*Landmark = ,*/ LandmarkId = 1, JourneyId = 1 });

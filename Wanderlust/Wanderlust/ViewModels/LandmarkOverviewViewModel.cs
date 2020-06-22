@@ -70,7 +70,8 @@ namespace Wanderlust.ViewModels
 
         private void OnAddCommand()
         {
-            _navigationService.NavigateTo(ViewNames.LandmarkDetailView);
+            //_navigationService.NavigateTo(ViewNames.LandmarkDetailView);
+            // add to journey TODO
         }
 
         private void OnLandmarkSelectedCommand(Landmark landmark)

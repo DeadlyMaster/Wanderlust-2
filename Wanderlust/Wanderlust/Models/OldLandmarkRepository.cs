@@ -20,7 +20,7 @@ namespace Wanderlust.Models
         //local
         //private string baseUrl = Device.RuntimePlatform == Device.Android ? "https://10.0.2.2:5001/api/landmarkrepository" : "https://localhost:5001/api/piestock";
         // Android preconfigured IP address to allow us to connect to a local API
-        private const string baseUrl = "https://10.0.2.2:5001/api/landmarkrepository";
+        private const string baseUrl = "https://10.0.2.2:5001/api/landmarks";
 
 
         public OldLandmarkRepository()
@@ -62,7 +62,7 @@ namespace Wanderlust.Models
 
         public async Task<List<Landmark>> GetLandmarksAsync()
         {
-            var url = new Uri(ApiConstants.BaseApiUrl);
+            var url = new Uri(ApiConstants.LandmarkApiUrl);
 
             HttpResponseMessage response = await _httpClient.GetAsync(url);
 
@@ -83,6 +83,11 @@ namespace Wanderlust.Models
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             await _httpClient.PutAsync(url, content);
+        }
+
+        public Task<List<Landmark>> GetMustSeeLandmarksAsync()
+        {
+            throw new NotImplementedException();
         }
 
 

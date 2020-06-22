@@ -8,14 +8,6 @@
              x:Class="Wanderlust.App">
     <Application.Resources>
 
-        <Color x:Key="primary-back-title-color">#00264c</Color>
-        <Color x:Key="primary-title-color">#F8F8FF</Color>
-
-        <Style ApplyToDerivedTypes="true" TargetType="NavigationPage">
-            <Setter Property="BarBackgroundColor" Value="{StaticResource Key=primary-back-title-color}"/>
-            <Setter Property="BarTextColor" Value="{StaticResource Key=primary-title-color}"/>
-        </Style>
-
         <ResourceDictionary>
 
             <OnPlatform x:Key="LargeFontSize"
@@ -36,13 +28,7 @@
                 <On Platform="Android, UWP, WinRT, WinPhone" Value="11" />
             </OnPlatform>
 
-            <OnPlatform x:Key="XSmallFontSize"
-                        x:TypeArguments="x:Double">
-                <On Platform="iOS" Value="11" />
-                <On Platform="Android, UWP, WinRT, WinPhone" Value="9" />
-            </OnPlatform>
-
-            <Color x:Key="BethanyPurple">#a594c1</Color>
+            <Color x:Key="WanderlustPurple">#a594c1</Color>
             <Color x:Key="HeaderGrey">#aaaaaa</Color>
             <Color x:Key="PlainGrey">#aaaaaa</Color>
             <Color x:Key="LightGrey">#cccccc</Color>
@@ -63,55 +49,13 @@
                 <Setter Property="TextColor" Value="{StaticResource Black}" />
             </Style>
 
-            <Style x:Key="LinkStyle" TargetType="{x:Type Label}">
-                <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"></Setter>
-                <Setter Property="BackgroundColor" Value="Transparent" />
-                <Setter Property="TextColor" Value="{StaticResource BethanyPurple}" />
-                <Setter Property="FontAttributes" Value="Bold" />
-            </Style>
-
-            <!--<Style x:Key="RoundedEntryStyle" TargetType="{x:Type controls:RoundedEntry}">
-                <Setter Property="CornerRadius" Value="3"></Setter>
-                <Setter Property="IsCurvedCornersEnabled" Value="True"></Setter>
-                <Setter Property="BorderColor" Value="{StaticResource LightGrey}"></Setter>
-                <Setter Property="HorizontalTextAlignment" Value="Start"></Setter>
-                <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"></Setter>
-                <Setter Property="HeightRequest" Value="30"></Setter>
-                <Setter Property="PlaceholderColor" Value="{StaticResource PlainGrey}"></Setter>
-                <Setter Property="TextColor" Value="{StaticResource EntryGrey}"></Setter>
-            </Style>-->
-
-            <Style x:Key="RegularEntryStyle" TargetType="{x:Type Entry}">
-                <Setter Property="HorizontalTextAlignment" Value="Start"></Setter>
-                <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"></Setter>
-                <Setter Property="HeightRequest" Value="15"></Setter>
-                <Setter Property="PlaceholderColor" Value="{StaticResource PlainGrey}"></Setter>
-                <Setter Property="TextColor" Value="{StaticResource EntryGrey}"></Setter>
-            </Style>
-
-            <Style x:Key="CheckoutEntryStyle" TargetType="{x:Type Entry}">
-                <Setter Property="HorizontalTextAlignment" Value="Start"></Setter>
-                <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"></Setter>
-                <Setter Property="HeightRequest" Value="25"></Setter>
-                <Setter Property="PlaceholderColor" Value="{StaticResource PlainGrey}"></Setter>
-                <Setter Property="TextColor" Value="{StaticResource EntryGrey}"></Setter>
-            </Style>
-
             <Style x:Key="RegularButton" TargetType="{x:Type Button}">
-                <Setter Property="BackgroundColor" Value="{StaticResource BethanyPurple}"></Setter>
+                <Setter Property="BackgroundColor" Value="{StaticResource WanderlustPurple}"></Setter>
                 <Setter Property="TextColor" Value="{StaticResource LightForeground}"></Setter>
                 <Setter Property="VerticalOptions" Value="Center"></Setter>
             </Style>
 
-            <Style x:Key="MenuLabelStyle" TargetType="{x:Type Label}">
-                <Setter Property="FontSize" Value="{StaticResource LargeFontSize}"></Setter>
-                <Setter Property="TextColor" Value="{StaticResource HeaderGrey}"></Setter>
-                <Setter Property="VerticalOptions" Value="End"></Setter>
-                <Setter Property="HorizontalOptions" Value="Start"></Setter>
-                <Setter Property="Margin" Value="5"></Setter>
-            </Style>
-
-            <Style x:Key="PieTileNameStyle" TargetType="{x:Type Label}">
+            <Style x:Key="LandmarkNameStyle" TargetType="{x:Type Label}">
                 <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"></Setter>
                 <Setter Property="TextColor" Value="{StaticResource EntryGrey}"></Setter>
                 <Setter Property="FontAttributes" Value="Bold"></Setter>
@@ -119,82 +63,22 @@
                 <Setter Property="HorizontalOptions" Value="Start"></Setter>
             </Style>
 
-            <Style x:Key="PieTilePriceStyle" TargetType="{x:Type Label}">
-                <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"></Setter>
-                <Setter Property="TextColor" Value="{StaticResource BethanyPurple}"></Setter>
-                <Setter Property="VerticalOptions" Value="Center"></Setter>
-                <Setter Property="HorizontalOptions" Value="End"></Setter>
-            </Style>
-
-            <Style x:Key="PieTileDescriptionStyle" TargetType="{x:Type Label}">
+            <Style x:Key="LandmarkDescriptionStyle" TargetType="{x:Type Label}">
                 <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"></Setter>
                 <Setter Property="TextColor" Value="{StaticResource EntryGrey}"></Setter>
                 <Setter Property="VerticalOptions" Value="Center"></Setter>
                 <Setter Property="HorizontalOptions" Value="Start"></Setter>
             </Style>
 
-            <Style x:Key="ShoppingCartTileSmallStyle" TargetType="{x:Type Label}">
-                <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"></Setter>
-                <Setter Property="TextColor" Value="{StaticResource BethanyPurple}"></Setter>
-                <Setter Property="VerticalOptions" Value="Center"></Setter>
-                <Setter Property="HorizontalOptions" Value="Center"></Setter>
-                <Setter Property="FontAttributes" Value="Bold"></Setter>
-
-            </Style>
-
-            <Style x:Key="ShoppingCartTotalStyle" TargetType="{x:Type Label}">
-                <Setter Property="FontSize" Value="{StaticResource MediumFontSize}"></Setter>
-                <Setter Property="TextColor" Value="{StaticResource BethanyPurple}"></Setter>
-                <Setter Property="VerticalOptions" Value="Center"></Setter>
-                <Setter Property="HorizontalOptions" Value="Center"></Setter>
-                <Setter Property="FontAttributes" Value="Bold"></Setter>
-            </Style>
-
-            <Style x:Key="ShoppingCartLabelTotalStyle" TargetType="{x:Type Label}">
-                <Setter Property="FontSize" Value="{StaticResource EntryGrey}"></Setter>
-                <Setter Property="TextColor" Value="{StaticResource BethanyPurple}"></Setter>
-                <Setter Property="VerticalOptions" Value="Center"></Setter>
-                <Setter Property="HorizontalOptions" Value="Center"></Setter>
-                <Setter Property="FontAttributes" Value="Bold"></Setter>
-            </Style>
-
-            <Style x:Key="ShoppingCartTileSmallHeaderStyle" TargetType="{x:Type Label}">
-                <Setter Property="FontSize" Value="{StaticResource XSmallFontSize}"></Setter>
-                <Setter Property="TextColor" Value="{StaticResource EntryGrey}"></Setter>
-                <Setter Property="VerticalOptions" Value="Center"></Setter>
-                <Setter Property="HorizontalOptions" Value="Center"></Setter>
-            </Style>
-
-            <Style x:Key="ShoppingCartTileSmallBoldStyle" TargetType="{x:Type Label}">
-                <Setter Property="FontSize" Value="{StaticResource XSmallFontSize}"></Setter>
-                <Setter Property="TextColor" Value="{StaticResource EntryGrey}"></Setter>
-                <Setter Property="VerticalOptions" Value="Center"></Setter>
-                <Setter Property="HorizontalOptions" Value="Start"></Setter>
-                <Setter Property="FontAttributes" Value="Bold"></Setter>
-            </Style>
-
-            <Style x:Key="PieLongDescriptionStyle" TargetType="{x:Type Label}">
-                <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"></Setter>
-                <Setter Property="TextColor" Value="{StaticResource EntryGrey}"></Setter>
-                <Setter Property="VerticalOptions" Value="Start"></Setter>
-                <Setter Property="HorizontalOptions" Value="Start"></Setter>
-            </Style>
-
-            <!--<converters:ItemTappedConverter x:Key="LocalItemTappedConverter"></converters:ItemTappedConverter>
-            <converters:MenuIconConverter x:Key="LocalMenuIconConverter"></converters:MenuIconConverter>
-            <converters:CurrencyConverter x:Key="LocalCurrencyConverter"></converters:CurrencyConverter>
-            <converters:CountToVisibilityConverter x:Key="LocalCountToVisibilityConverter"></converters:CountToVisibilityConverter>-->
         </ResourceDictionary>
-        
-        
-        
 
-        <Color x:Key="BethanysGreenColor">#22cfa7</Color>
+
+        <Color x:Key="WanderlustBlue">#00264c</Color>
         <converter:ItemTappedConverter x:Key="LocalItemTappedConverter"></converter:ItemTappedConverter>
         <Style x:Key="RegularButtonStyle" TargetType="Button">
             <Setter Property="HorizontalOptions" Value="Center"></Setter>
             <Setter Property="VerticalOptions" Value="Start"></Setter>
-            <Setter Property="BackgroundColor" Value="{StaticResource BethanysGreenColor}"></Setter>
+            <Setter Property="BackgroundColor" Value="{StaticResource WanderlustBlue}"></Setter>
             <Setter Property="TextColor" Value="White"></Setter>
         </Style>
 
@@ -232,9 +116,5 @@
             <Setter Property="FontSize" Value="Medium"></Setter>
         </Style>
 
-        <Style x:Key="LargeLabelStyle" TargetType="Label" 
-               BasedOn="{StaticResource BaseLabelStyle}">
-            <Setter Property="FontSize" Value="Large"></Setter>
-        </Style>
     </Application.Resources>
 </Application>

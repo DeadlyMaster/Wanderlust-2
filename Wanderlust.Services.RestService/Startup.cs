@@ -27,6 +27,11 @@ namespace Wanderlust.Services.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //DbContextOptions<DbContext> contextOptions = new DbContextOptionsBuilder<DbContext>().UseInMemoryDatabase("Context").Options; services.AddSingleton(contextOptions);
+
+            //var optionsBuilder = new DbContextOptionsBuilder<ApiDbContext>();
+            //optionsBuilder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+
             services.AddDbContext<ApiDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             //build in dependency injection of ASP.NET core
@@ -35,6 +40,7 @@ namespace Wanderlust.Services.API
             //services.AddSingleton<ILandmarkService, LandmarkService>();
 
             services.AddScoped<ILandmarkRepository, LandmarkRepository>();
+            services.AddScoped<IJourneyRepository, JourneyRepository>();
 
             services.AddControllers();
         }

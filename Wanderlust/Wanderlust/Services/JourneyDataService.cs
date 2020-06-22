@@ -53,9 +53,10 @@ namespace Wanderlust.Services
         // we know the user id and we pass further the correct uri for the API call
         public async Task<List<Journey>> GetJourneysAsync(int userId)
         {
-            UriBuilder builder = new UriBuilder(ApiConstants.BaseApiUrl)
+            UriBuilder builder = new UriBuilder(ApiConstants.JourneyApiUrl)
             {
-                Path = $"{ApiConstants.JourneyApiUrl}/{userId}"
+                //Path = $"{ApiConstants.JourneyApiUrl}" // /{userId} no user id cuz we don't have one yet
+
             };
 
             return await _journeyRepository.GetJourneysAsync(builder.ToString());

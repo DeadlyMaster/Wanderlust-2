@@ -2,15 +2,22 @@
     color: #fff;
     align-items: center;
     justify-content: center;
-    background-color: #00264c; /* #0f0f9a */
+    /*background-color: #00264c;*/ /* #0f0f9a */
+}
+
+.title {
+    text-align: center;
 }
 
 .container {
-    background-color: #cccccc;
+/*    background-color: white;*/
+/*    background-color: rgba(0,0,255,0.3);*/
+    background-color: rgb(192,192,192);
+    opacity: 0.6;
     width: 300;
     height: 340;
     flex-direction: column;
-    margin-top: -30;
+    margin-top: -0;
 }
 
 .login-form {

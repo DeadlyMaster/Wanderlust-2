@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace Wanderlust.Services
 {
@@ -35,6 +36,11 @@ namespace Wanderlust.Services
             {
                 throw new ArgumentException($"This page doesn't exist: {pageKey}.", nameof(pageKey));
             }
+        }
+
+        public async Task GoBackAsync()
+        {
+            await MainPage.Navigation.PopAsync();
         }
     }
 

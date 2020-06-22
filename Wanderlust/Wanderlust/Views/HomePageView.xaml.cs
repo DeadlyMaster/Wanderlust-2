@@ -10,12 +10,12 @@ using Xamarin.Forms.Xaml;
 namespace Wanderlust.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPageView : ContentPage
+    public partial class HomePageView : ContentPage
     {
-        public LoginPageView()
+        public HomePageView()
         {
             InitializeComponent();
-            BindingContext = ViewModelLocator.LoginViewModel;
+            BindingContext = ViewModelLocator.HomeViewModel;
         }
     }
 }

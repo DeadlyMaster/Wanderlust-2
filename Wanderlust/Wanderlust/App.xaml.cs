@@ -1,6 +1,7 @@
 ﻿using System;
 using Wanderlust.Essentials;
 using Wanderlust.Models;
+using Wanderlust.Repository;
 using Wanderlust.Services;
 using Wanderlust.Utility;
 using Wanderlust.Views;
@@ -12,10 +13,16 @@ namespace Wanderlust
     public partial class App : Application
     {
         //singleton - one data service instance
-        public static LandmarkDataService LandmarkDataService { get; set; } = new LandmarkDataService(new LandmarkRepository()); //  OldLandmarkRepository
+        public static LandmarkDataService LandmarkDataService { get; set; } = new LandmarkDataService(new LandmarkRepository());
         public static NavigationService NavigationService { get; } = new NavigationService();
 
+        public static JourneyDataService JourneyDataService { get; set; } = new JourneyDataService(new JourneyRepository());
+
         public static DialogService DialogService { get; set; } = new DialogService();
+
+        public static AuthenticateService AuthenticateService { get; set; } = new AuthenticateService();
+
+        public static UserDataService UserDataService { get; set; } = new UserDataService(new UserRepository());
 
         public App()
         {
@@ -25,14 +32,10 @@ namespace Wanderlust
             NavigationService.Configure(ViewNames.LandmarkDetailView, typeof(LandmarkDetailView));
             NavigationService.Configure(ViewNames.HomePageView, typeof(HomePageView));
             NavigationService.Configure(ViewNames.LoginPageView, typeof(LoginPageView));
+            NavigationService.Configure(ViewNames.JourneyOverviewView, typeof(JourneyOverviewView));
+            NavigationService.Configure(ViewNames.JourneyDetailView, typeof(JourneyDetailView));
 
             MainPage = new NavigationPage(new LoginPageView());
-            //MainPage = new TextToSpeechPage(); // working
-
-            //MainPage = new MapsPage();
-
-            //MainPage = new LoginPageView();
-            //MainPage = new HomePageView();
         }
 
         protected override void OnStart()

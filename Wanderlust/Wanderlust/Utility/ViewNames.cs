@@ -10,5 +10,7 @@ namespace Wanderlust.Utility
         public const string LandmarkDetailView = "LandmarkDetailView";
         public const string HomePageView = "HomePageView";
         public const string LoginPageView = "LoginPageView";
+        public const string JourneyOverviewView = "JourneyOverviewView";
+        public const string JourneyDetailView = "JourneyDetailView";
     }
 }
